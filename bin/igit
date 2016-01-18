@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+// --------------------------------------------------------------------------------------------------------------------
+
+// npm
+var program = require('commander')
+
+// local
+var pkg = require('../package.json')
+var igit = require('../lib/igit.js')
+
+// --------------------------------------------------------------------------------------------------------------------
+
+program
+  .command('setup')
+  .description("setup git, it's repo dir and a backup cron on this machine")
+  .action(igit.setup)
+  .on('--help', function() {
+    console.log('  Examples:');
+    console.log();
+    console.log('    $ igit setup');
+    console.log();
+  })
+
+program
+  .command('new <dir> <description>')
+  .description("create a new repo in the right place")
+  .action(igit.newRepo)
+  .on('--help', function() {
+    console.log('  Examples:');
+    console.log();
+    console.log("    $ igit new chilts-igit 'Easily manage your repos on your server, including backups to Amazon S3.'");
+    console.log();
+  })
+
+program
+  .command('backup <bucket-name>')
+  .description("backup all repositories to an S3 bucket")
+  .action(igit.backup)
+  .on('--help', function() {
+    console.log('  Examples:');
+    console.log();
+    console.log("    $ AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... igit backup <bucket-name>");
+    console.log();
+  })
+
+// --------------------------------------------------------------------------------------------------------------------
+
+program.parse(process.argv)
+
+// --------------------------------------------------------------------------------------------------------------------

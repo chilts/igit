@@ -1,0 +1,18 @@
+{
+  "name": "igit",
+  "description": "Easily manage your repos on your server, including backups to Amazon S3.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/chilts/igit",
+  "main": "lib/igit.js",
+  "dependencies": {
+    "async": "^1.5.2",
+    "commander": "^2.9.0"
+  },
+  "bin": "./bin/igit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chilts/igit.git"
+  },
+  "author": "Andrew Chilton <andychilton@gmail.com> (http://chilts.org/)",
+  "license": "MIT"
+}
